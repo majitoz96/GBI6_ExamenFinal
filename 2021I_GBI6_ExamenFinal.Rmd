@@ -14,7 +14,8 @@ output:
       smooth_scroll: yes
 ---
 
-![](./img/ikiam.png)
+![](./IKIAM sello.png)
+
 
 **Bienvenidos al examen final de GBI6 - Bioinformática.**
 
@@ -219,123 +220,124 @@ graficoscancer <- list (
 ### [0.5 PUNTOS] 2.5. Utilizando la función ```lapply()``` genera la lista ```reg_genplots``` con las gráficas para cada par de genes posibles. Recuerde que tiene 7 tipos de genes, se debe tener todas las combinaciones posibles por pares de genes (combinatoria sin repetición).
 ```{r list_regplots}
 # Escriba el código para generar la lista. 
-reg_gen_expression <- function (gen) {
+expresion_gen_reg <- function (gen) {
   if (gen == "GATA3"){
     total <- list (
-      lapply(plots_cancer, function(x) {ggplot(x, aes(GATA3, PTEN)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(GATA3, XBP1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(GATA3, XBP1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(GATA3, ESR1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(GATA3, ESR1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(GATA3, MUC1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(GATA3, MUC1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(GATA3, FN1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(GATA3, FN1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(GATA3, GAPDH)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(GATA3, GAPDH)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}))
     }
   else if (gen == "PTEN"){
     total <- list (
-      lapply(plots_cancer, function(x) {ggplot(x, aes(PTEN, GATA3)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(PTEN, GATA3)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(PTEN, XBP1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(PTEN, XBP1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(PTEN, ESR1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(PTEN, ESR1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(PTEN, MUC1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(PTEN, MUC1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(PTEN, FN1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(PTEN, FN1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(PTEN, GAPDH)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(PTEN, GAPDH)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}))
   }
   else if (gen == "XBP1"){
     total <- list (
-      lapply(plots_cancer, function(x) {ggplot(x, aes(XBP1, GATA3)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(XBP1, GATA3)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(XBP1, PTEN)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(XBP1, PTEN)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(XBP1, ESR1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(XBP1, ESR1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(XBP1, MUC1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(XBP1, MUC1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(XBP1, FN1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(XBP1, FN1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(XBP1, GAPDH)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(XBP1, GAPDH)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}))
   }
   else if (gen == "ESR1"){
     total <- list (
-      lapply(plots_cancer, function(x) {ggplot(x, aes(ESR1, GATA3)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(ESR1, GATA3)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(ESR1, PTEN)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(ESR1, PTEN)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(ESR1, XBP1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(ESR1, XBP1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(ESR1, MUC1)) + 
+      lapply(graficoscancerr, function(x) {ggplot(x, aes(ESR1, MUC1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(ESR1, FN1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(ESR1, FN1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(ESR1, GAPDH)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(ESR1, GAPDH)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}))
   }
   else if (gen == "MUC1"){
     total <- list (
-      lapply(plots_cancer, function(x) {ggplot(x, aes(MUC1, GATA3)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(MUC1, GATA3)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(MUC1, PTEN)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(MUC1, PTEN)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(MUC1, XBP1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(MUC1, XBP1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(MUC1, ESR1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(MUC1, ESR1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(MUC1, FN1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(MUC1, FN1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(MUC1, GAPDH)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(MUC1, GAPDH)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}))
   }
   else if (gen == "FN1"){
     total <- list (
-      lapply(plots_cancer, function(x) {ggplot(x, aes(FN1, GATA3)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(FN1, GATA3)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(FN1, PTEN)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(FN1, PTEN)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(FN1, XBP1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(FN1, XBP1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(FN1, ESR1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(FN1, ESR1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(FN1, MUC1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(FN1, MUC1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(FN1, GAPDH)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(FN1, GAPDH)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}))
   }
   else if (gen == "GAPDH"){
     total <- list (
-      lapply(plots_cancer, function(x) {ggplot(x, aes(GAPDH, GATA3)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(GAPDH, GATA3)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(GAPDH, PTEN)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(GAPDH, PTEN)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(GAPDH, XBP1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(GAPDH, XBP1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(GAPDH, ESR1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(GAPDH, ESR1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(GAPDH, MUC1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(GAPDH, MUC1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
-      lapply(plots_cancer, function(x) {ggplot(x, aes(GAPDH, FN1)) + 
+      lapply(graficoscancer, function(x) {ggplot(x, aes(GAPDH, FN1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}))
   }
 }
-
 ```
 
 ### [0.5 PUNTOS] 2.6. Guarde en el subdirectorio ```result``` el onceavo plot de la lista ```reg_genplots``` con el nombre ```regresion11.pdf```. La definición de a figura debe ser de 300dpi. 
 ```{r reg11}
 
- 
-graficos_cancer <- reg_gen_expression("GATA3")
+graficos_cancer <- expresion_gen_reg("GATA3")
+
 graficos_cancer[[5]][[2]]
+
 ggsave("C:/Users/Maria/Desktop/sexto semeste/bioinformatica/git'/GBI6_ExamenFinal/Result/regresion11.pdf", width = 5, height = 9, dpi = 300)
+
+
 ```
 
 ### [1 PUNTO] 2.7. Interprete los resultados de las figuras ```boxplot3.png``` y ```regresion11.pdf```.
