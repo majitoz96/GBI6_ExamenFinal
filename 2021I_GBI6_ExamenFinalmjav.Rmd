@@ -140,7 +140,7 @@ df_long$gen=as.factor(df_long$gen)
 df_long$dataset=as.factor(df_long$dataset)
   df_long$expresion_level=as.numeric(df_long$expresion_level)
 result=descr(df_long%>%select(expresion_level,dataset)%>%group_by(dataset))
-result
+
 
 ```
 
@@ -358,8 +358,16 @@ ggsave("C:/Users/Maria/Desktop/sexto semeste/bioinformatica/git'/GBI6_ExamenFina
 ### [1 PUNTO] 2.7. Interprete los resultados de las figuras ```boxplot3.png``` y ```regresion11.pdf```.
 
 ```{tex}
-# En la figura boxplot se aprecia que la mediana no esta en el centro de lo caja por lo que puede presentar una asimetria negativa; por otra parte en la regresion se aprecian una distribucion normal debido a que existen muchos valores que estan fuera del rango permitido
+#  Se puede ver que el nivel de expresión del gen LUSC está por encima de la media, lo que pudiera sugerir una sobreexpresión genética
 
+```
+borrar
+```{tex}
+# Esciba aquí su intepretación
+Interpretación figura boxplot:
+  Se puede observar que la mediana no se ubica en el centro de la caja por tanto presenta asimetría negativa o sesgada a la izquierda pues la parte más larga es la inferior a la mediana. Por tanto se puede establecer que los datos se concentran en la parte superior de la distribución.
+Interpretación regresión:
+  En la gráfica se puede observar que existen muchos valores que se encuentran fuera del rango permitido por tanto los datos no siguen una distribución normal estándar.
 ```
 
 
