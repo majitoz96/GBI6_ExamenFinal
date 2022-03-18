@@ -1,6 +1,6 @@
 # GBI6_ExamenFinal
 Examen Final bioinformatica 
-Datos personales
+# Datos personales
 Nombres y Apellidos: Maria Jose Auquilla Villamagua
 
 Cedula: 1105790867
@@ -11,7 +11,8 @@ Edad: 25 años
 
 Ciudad natal: Loja
 
-Características del computador
+# Características del computador
+
 Nombre del dispositivo LAPTOP-CUSHFCG5
 
 Procesador Intel(R) Core(TM) i3-8130U CPU @ 2.20GHz 2.20 GHz
@@ -26,4 +27,22 @@ Tipo de sistema Sistema operativo de 64 bits, procesador x64
 
 Lápiz y entrada táctil Compatibilidad con entrada táctil con 10 puntos táctiles
 
-Data utilizada 
+# Data utilizada 
+
+library(readr)
+
+library(tidyr)
+
+library(dplyr)
+
+library(dplyr)
+
+library(sjPlot)
+
+library(sjmisc)
+
+library(ggplot2) 
+
+
+
+
