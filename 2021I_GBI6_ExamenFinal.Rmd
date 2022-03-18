@@ -223,6 +223,7 @@ graficoscancer <- list (
 expresion_gen_reg <- function (gen) {
   if (gen == "GATA3"){
     total <- list (
+      lapply(graficoscancer, function(x) {ggplot(x, aes(GATA3, PTEN)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
       lapply(graficoscancer, function(x) {ggplot(x, aes(GATA3, XBP1)) + 
           geom_point() + geom_smooth(method='lm', formula= y~x)}), 
