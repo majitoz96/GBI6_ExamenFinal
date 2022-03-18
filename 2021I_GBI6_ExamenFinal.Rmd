@@ -92,30 +92,14 @@ head(df)
 
 ```{r funcion_long}
 # Escriba aquí la función long_df
-long_df=function(df) {
-  m=data.frame(id=1:1463)
-
-  x=as.matrix(df)
-m=cbind(m,rep(x[,2],7))
- 
- m$id=NULL
- names(m)=names(df[,c(2)])
- Tratamiento=NULL
-
- for (i in 3:9) {
-    Tratamiento=c(Tratamiento,x[,i])
- }
-
- n=names(df[,3:9])
- N_name=c(rep(n[1],1463),rep(n[2],1463),rep(n[3],1463),rep(n[4],1463),rep(n[5],1463),rep(n[6],1463),rep(n[7],1463))
-
- m=cbind(N_name,Tratamiento,m)
-
-  names(m)=c("gen", "expresion_level", "dataset")
-   return(m)
+long_df <- function(df) {
+  library(tidyr)
+  library(dplyr)
+  df$dataset <- as.factor(df$dataset)
+  df_l <- gather(df, gen, expresion_level, GATA3, PTEN, XBP1, ESR1, MUC1, FN1, GAPDH, factor_key=TRUE)
+  df_l2 <- select(df_l, -bcr_patient_barcode)
+  return (df_l2)
 }
-
-
 
 ```
 
@@ -124,23 +108,21 @@ m=cbind(m,rep(x[,2],7))
 La tabla resultante tendrá tres columnas: ```dataset, gen, expresion_level```.  
 ```{r df_long}
 # Genere la data df_long 
-df_long=long_df(df)
-
-
-head(df_long)
+library(dplyr)
+df_long <- long_df(df)
+TCA <- df_long %>% group_by(gen)
+TCA
 ```
 ### [0.5 PUNTOS] 1.5 A partir de la data ```df_long```, genere un **Descriptive table** (librería ```sjPlot```) y guárdelo en el subdirectorio "result"  con el nombre **mRNA_expr_summary.doc** (previamente debe seleccionar las celdas adecuadas con funciones de la librería ```dplyr``` en conjunto con el operador ```%>%```). 
 ```{r desc_table}
 # Escriba el código para crear el Descriptive table 
 library(sjPlot)
-library(dplyr)
 library(sjmisc)
-
-df_long$gen=as.factor(df_long$gen)
-df_long$dataset=as.factor(df_long$dataset)
-  df_long$expresion_level=as.numeric(df_long$expresion_level)
-result=descr(df_long%>%select(expresion_level,dataset)%>%group_by(dataset))
-result
+CAdeMama <- TCA %>% group_by(gen) %>% mutate(row = row_number()) %>%
+  tidyr::pivot_wider(names_from = gen, values_from = expresion_level) %>%
+  select(-row)
+descr(CAdeMama) %>% tab_df(title = "Estadistica descriptiva del cancer de MAMA en los diferentes nivel de expresion en los genes",
+                             file = "C:/Users/Maria/Desktop/sexto semeste/bioinformatica/git'/GBI6_ExamenFinal/Result/mRNA_expr_summary.doc") 
 
 ```
 
@@ -190,7 +172,7 @@ cancertype_boxplots
 ```{r boxplot3}
 # Escriba el código para guardar la tercera figura de la lista. 
 cancertype_boxplots
-ggsave("C:/Users/Maria/Desktop/sexto semeste/bioinformatica/git'/GBI6_ExamenFinal/results/boxplot3.png", width = 6, height = 8, dpi = 300)
+ggsave("C:/Users/Maria/Desktop/sexto semeste/bioinformatica/git'/GBI6_ExamenFinal/Result/boxplot3.png", width = 6, height = 8, dpi = 300)
 
 ```
 
@@ -349,10 +331,11 @@ reg_gen_expression <- function (gen) {
 
 ### [0.5 PUNTOS] 2.6. Guarde en el subdirectorio ```result``` el onceavo plot de la lista ```reg_genplots``` con el nombre ```regresion11.pdf```. La definición de a figura debe ser de 300dpi. 
 ```{r reg11}
-# Escriba el código para guardar el onceavo plot. 
-graficos_cancer <- expresion_gen_reg("GATA3")
+
+ 
+graficos_cancer <- reg_gen_expression("GATA3")
 graficos_cancer[[5]][[2]]
-ggsave("C:/Users/Maria/Desktop/sexto semeste/bioinformatica/git'/GBI6_ExamenFinal/results/regresion11.pdf", width = 5, height = 9, dpi = 300)
+ggsave("C:/Users/Maria/Desktop/sexto semeste/bioinformatica/git'/GBI6_ExamenFinal/Result/regresion11.pdf", width = 5, height = 9, dpi = 300)
 ```
 
 ### [1 PUNTO] 2.7. Interprete los resultados de las figuras ```boxplot3.png``` y ```regresion11.pdf```.
