@@ -92,9 +92,33 @@ head(df)
 
 ```{r funcion_long}
 # Escriba aquí la función long_df
+long_df=function(df) {
+  m=data.frame(id=1:1463)
+
+  x=as.matrix(df)
+m=cbind(m,rep(x[,2],7))
+ 
+ m$id=NULL
+ names(m)=names(df[,c(2)])
+ Tratamiento=NULL
+
+ for (i in 3:9) {
+    Tratamiento=c(Tratamiento,x[,i])
+ }
+
+ n=names(df[,3:9])
+ N_name=c(rep(n[1],1463),rep(n[2],1463),rep(n[3],1463),rep(n[4],1463),rep(n[5],1463),rep(n[6],1463),rep(n[7],1463))
+
+ m=cbind(N_name,Tratamiento,m)
+
+  names(m)=c("gen", "expresion_level", "dataset")
+   return(m)
+}
+
 
 
 ```
+
 
 
 ### [1 PUNTO] Genere la data ```df_long``` utilizandola función ```long_df```. 
