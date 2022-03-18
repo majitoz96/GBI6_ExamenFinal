@@ -347,9 +347,10 @@ expresion_gen_reg <- function (gen) {
 ### [0.5 PUNTOS] 2.6. Guarde en el subdirectorio ```result``` el onceavo plot de la lista ```reg_genplots``` con el nombre ```regresion11.pdf```. La definición de a figura debe ser de 300dpi. 
 ```{r reg11}
 # Escriba el código para guardar el onceavo plot. 
-
+graficos_cancer <- expresion_gen_reg("GATA3")
+graficos_cancer[[5]][[2]]
+ggsave("C:/Users/Maria/Desktop/sexto semeste/bioinformatica/git'/GBI6_ExamenFinal/results/regresion11.pdf", width = 5, height = 9, dpi = 300)
 ```
-
 
 ### [1 PUNTO] 2.7. Interprete los resultados de las figuras ```boxplot3.png``` y ```regresion11.pdf```.
 
