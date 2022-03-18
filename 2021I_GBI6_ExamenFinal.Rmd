@@ -186,6 +186,8 @@ cancertype_boxplots=tcga_boxplots(df_long)
 ### [0.5 PUNTOS] 2.3 Guarde en el subdirectorio ```result``` el tercer plot de la lista ```cancertype_boxplots``` con el nombre ```boxplot3.png```. La definición de a figura debe ser de 300dpi. 
 ```{r boxplot3}
 # Escriba el código para guardar la tercera figura de la lista. 
+cancertype_boxplots[3]
+ggsave("boxplot3.png", width = 6, height = 8, dpi = 300)
 
 
 ```
@@ -195,9 +197,39 @@ cancertype_boxplots=tcga_boxplots(df_long)
 
 ```{r reg_gen_exp}
 # Escriba aquí su función reg_gen_expression
-
-
+tipo_dataset <- list(BRCA <- filter(df_long, dataset == "BRCA"), OV <- filter(df_long, dataset == "OV"),
+    LUSC <- filter(df_long, dataset == "LUSC"),
+    KIPAN <- filter(df_long, dataset == "KIPAN"),
+    KIRP <- filter(df_long, dataset == "KIRP"),
+    UCEC <- filter(df_long, dataset == "UCEC"), 
+    GAPDH <- filter(df_long, dataset == "GAPDH")
+  )
+  
+graficoscancer <- list (  
+  BRCA_1 <- BRCA %>% group_by(gen) %>% mutate(row = row_number()) %>%
+    tidyr::pivot_wider(names_from = gen, values_from = expresion_level) %>%
+    select(-row),
+  OV_1 <- OV %>% group_by(gen) %>% mutate(row = row_number()) %>%
+    tidyr::pivot_wider(names_from = gen, values_from = expresion_level) %>%
+    select(-row),
+  LUSC_1 <- LUSC %>% group_by(gen) %>% mutate(row = row_number()) %>%
+    tidyr::pivot_wider(names_from = gen, values_from = expresion_level) %>%
+    select(-row),
+  KIPAN_1 <- KIPAN %>% group_by(gen) %>% mutate(row = row_number()) %>%
+    tidyr::pivot_wider(names_from = gen, values_from = expresion_level) %>%
+    select(-row),
+  KIRP_1 <- KIRP %>% group_by(gen) %>% mutate(row = row_number()) %>%
+    tidyr::pivot_wider(names_from = gen, values_from = expresion_level) %>%
+    select(-row),
+  UCEC_1 <- UCEC %>% group_by(gen) %>% mutate(row = row_number()) %>%
+    tidyr::pivot_wider(names_from = gen, values_from = expresion_level) %>%
+    select(-row),
+  GAPH_1 <- UCEC %>% group_by(gen) %>% mutate(row = row_number()) %>%
+    tidyr::pivot_wider(names_from = gen, values_from = expresion_level) %>%
+    select(-row)
+)
 ```
+
 
 
 ### [0.5 PUNTOS] 2.5. Utilizando la función ```lapply()``` genera la lista ```reg_genplots``` con las gráficas para cada par de genes posibles. Recuerde que tiene 7 tipos de genes, se debe tener todas las combinaciones posibles por pares de genes (combinatoria sin repetición).
