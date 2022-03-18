@@ -120,17 +120,26 @@ m=cbind(m,rep(x[,2],7))
 ```
 
 
-
 ### [1 PUNTO] Genere la data ```df_long``` utilizandola función ```long_df```. 
 La tabla resultante tendrá tres columnas: ```dataset, gen, expresion_level```.  
 ```{r df_long}
 # Genere la data df_long 
+df_long=long_df(df)
 
+
+head(df_long)
 ```
-
 ### [0.5 PUNTOS] 1.5 A partir de la data ```df_long```, genere un **Descriptive table** (librería ```sjPlot```) y guárdelo en el subdirectorio "result"  con el nombre **mRNA_expr_summary.doc** (previamente debe seleccionar las celdas adecuadas con funciones de la librería ```dplyr``` en conjunto con el operador ```%>%```). 
 ```{r desc_table}
 # Escriba el código para crear el Descriptive table 
+library(sjPlot)
+library(dplyr)
+library(sjmisc)
+df_long$gen=as.factor(df_long$gen)
+df_long$dataset=as.factor(df_long$dataset)
+  df_long$expresion_level=as.numeric(df_long$expresion_level)
+result=descr(df_long%>%select(expresion_level,dataset)%>%group_by(dataset))
+
 
 ```
 
